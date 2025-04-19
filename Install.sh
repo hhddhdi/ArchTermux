@@ -1,13 +1,13 @@
 echo "Updating..."
 pkg update > /dev/null 2>&1
 
-echo “installing git package..."
+echo "installing git package..."
 pkg install git -y > /dev/null 2>&1
 
-echo “installing wget package..."
+echo "installing wget package..."
 pkg install wget -y > /dev/null 2>&1
 
-echo “installing x11 package..."
+echo "installing x11 package..."
 pkg install x11-repo -y > /dev/null 2>&1
 
 echo "installing root package..."
