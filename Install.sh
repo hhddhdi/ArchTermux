@@ -25,7 +25,7 @@ pkg install tsu -y > /dev/null 2>&1
 echo "installing PulseAudio package..."
 pkg install pulseaudio -y > /dev/null 2>&1
 clear
-echo "Run the command "./install.sh””
+echo "Run the command './install.sh'"
 su -c 'curl -o install.sh https://raw.githubusercontent.com/hhddhdi/ArchTermux/main/installsu.sh' > /dev/null 2>&1
 su -c 'chmod +x install.sh'
 su
