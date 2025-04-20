@@ -1,28 +1,23 @@
 echo "Updating..."
-pkg update > /dev/null 2>&1
 
-echo "installing git package..."
-pkg install git -y > /dev/null 2>&1
-
-echo "installing wget package..."
-pkg install wget -y > /dev/null 2>&1
-
-echo "installing x11 package..."
+pkg update -y > /dev/null 2>&1
+pkg upgrade -y > /dev/null 2>&1
 pkg install x11-repo -y > /dev/null 2>&1
-
-echo "installing root package..."
-pkg install root-repo -y > /dev/null 2>&1
-
-echo "installing termux-x11-nightly package..."
 pkg install termux-x11-nightly -y > /dev/null 2>&1
-
-echo "Updating again..."
-pkg update > /dev/null 2>&1
-
-echo "installing tsu package..."
+pkg install tur-repo -y > /dev/null 2>&1
+pkg install pulseaudio -y > /dev/null 2>&1
+pkg install proot-distro -y > /dev/null 2>&1
+pkg install wget -y > /dev/null 2>&1
+pkg install git -y > /dev/null 2>&1
+pkg update -y > /dev/null 2>&1
+pkg install x11-repo -y > /dev/null 2>&1
+pkg install root-repo -y > /dev/null 2>&1
+pkg install termux-x11-nightly -y > /dev/null 2>&1
+pkg update -y > /dev/null 2>&1
 pkg install tsu -y > /dev/null 2>&1
+pkg install pulseaudio -y > /dev/null 2>&1
 
-echo "installing PulseAudio package..."
+echo "installing packages..."
 pkg install pulseaudio -y > /dev/null 2>&1
 clear
 echo "Run the command './install.sh'"
