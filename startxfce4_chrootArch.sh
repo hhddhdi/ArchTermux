@@ -1,20 +1,24 @@
 #!/bin/bash
+
+# Encerra processos do Termux X11 (caso estejam rodando)
 pkill -f com.termux.x11
 killall -9 termux-x11 Xwayland pulseaudio virgl_test_server_android termux-wake-lock
 
-am start --user 0 -n com.termux.x11/com.termux.x11.MainActivity
-
+# Configuração do ambiente
 sudo busybox mount --bind $PREFIX/tmp /data/local/tmp/chrootarch/tmp
+sudo chmod -R 1777 /data/data/com.termux/files/usr/tmp
 
-XDG_RUNTIME_DIR=${TMPDIR} termux-x11 :0 -ac &
+# Inicia o PipeWire (substitui o PulseAudio)
+XDG_RUNTIME_DIR=${TMPDIR} pipewire &
+XDG_RUNTIME_DIR=${TMPDIR} pipewire-pulse &
+XDG_RUNTIME_DIR=${TMPDIR} wireplumber &
 
-sleep 3
-
-pulseaudio --start --load="module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1" --exit-idle-time=-1
-pacmd load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1
-
+# Inicia o servidor VirGL (se necessário)
 virgl_test_server_android &
 
-sudo chmod -R 1777 /data/data/com.termux/files/usr/tmp # i put this as virgl kept throwing errors and this seemed to work
+# Inicia o WayVNC (substituindo o Termux X11)
+sleep 3
+XDG_RUNTIME_DIR=${TMPDIR} wayvnc -r 1920x1080 :0 &
 
+# Inicia o ambiente Arch Linux
 su -c "sh /data/local/tmp/start_arch.sh"
