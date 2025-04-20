@@ -16,10 +16,12 @@ usermod -G 3003 -a root > /dev/null 2>&1
 pacman -Syu -y > /dev/null 2>&1
 pacman -S vim net-tools sudo git -y > /dev/null 2>&1
 
-groupadd storage
-groupadd wheel
-useradd -m -g users -G wheel,audio,video,storage,aid_inet -s /bin/bash hypr
+groupadd storage > /dev/null 2>&1
+groupadd wheel > /dev/null 2>&1
+useradd -m -g users -G wheel,audio,video,storage,aid_inet -s /bin/bash hypr > /dev/null 2>&1
 passwd hypr
 sed -i '/^root\s\+ALL=(ALL:ALL) ALL$/a hypr ALL=(ALL:ALL) ALL' /etc/sudoers > /dev/null 2>&1
 sed -i 's/^#\(en_US\.UTF-8 UTF-8\)/\1/' /etc/locale.gen > /dev/null 2>&1
-locale-gen
+locale-gen > /dev/null 2>&1
+sudo pacman -S hyprland wayland xorg-xwayland foot swaybg swayidle swaylock wlroots -y > /dev/null 2>&1
+sudo pacman -S pipewire-jack && sudo pacman -S wayvnc
