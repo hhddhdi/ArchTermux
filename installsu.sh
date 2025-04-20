@@ -27,5 +27,6 @@ echo -e '#!/bin/sh\nmnt="/data/local/tmp/chrootarch"\nbusybox mount -o remount,d
 
 chmod +x start_arch.sh
 clear
-
+curl -o /data/local/tmp/chrootarch/root/config.sh https://raw.githubusercontent.com/hhddhdi/ArchTermux/refs/heads/main/Config.sh > /dev/null 2>&1
+echo Use "./Config.sh" to do the initial setup
 sh start_arch.sh
