@@ -26,4 +26,6 @@ echo -e '#!/bin/sh\nmnt="/data/local/tmp/chrootarch"\nbusybox mount -o remount,d
 
 
 chmod +x start_arch.sh
+clear
+
 sh start_arch.sh
